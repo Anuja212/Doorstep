@@ -1,0 +1,143 @@
+{% load static %}
+<!DOCTYPE html>
+<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+	<link rel="icon" type="{% static 'image/png' %}" href="{% static 'images/icons/favicon.ico' %}"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'fonts/Linearicons-Free-v1.0.0/icon-font.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/animate/animate.css' %}">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/css-hamburgers/hamburgers.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/select2/select2.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'css/util.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Admin</title>
+
+  <!-- Custom fonts for this template-->
+  <link href="{% static 'vendor1/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+  <!-- Custom styles for this template-->
+  <link href="{% static 'css/sb-admin-2.min.css' %}" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+
+<body id="page-top" class="text-dark">
+    <table>
+  <!-- Page Wrapper -->
+ <tr><td><div id="wrapper">
+
+    <!-- Sidebar -->
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+     
+      <div> <font color="white" align="center"><br><br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;<b> <h1> Customer </h1></b> <br><br><br></div></font>
+       <!-- </a> -->
+
+      <!-- Divider -->
+      <hr class="sidebar-divider my-0">
+
+      <!-- Nav Item - Dashboard -->
+      <li class="nav-item active">
+        <a class="nav-link">
+          <!-- <i class="fas fa-fw fa-tachometer-alt"></i> -->
+          <span>Dashboard</span></a>
+      </li>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider">
+
+      <!-- Heading -->
+      <!-- <div class="sidebar-heading">
+        Interface
+      </div> -->
+
+      <!-- Nav Item - Pages Collapse Menu -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+          <!-- <i class="fas fa-fw fa-cog"></i> -->
+          <span>Product</span>
+        </a>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <a class="collapse-item" href="{% url 'order' %}">Order Product</a>
+          </div>
+        </div>
+      </li>
+
+     
+     
+      <li class="nav-item">
+          <a class="nav-link" href="{% url 'login' %}">
+           
+            <span>Log Out </span></a>
+        </li>
+    </ul></td>
+
+
+    <td class="simple"> 
+    <form action="{% url 'Info' %}">
+       <div class="container">
+            
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="text-center"><label for="">Product Information</label></h4>
+                </div>
+                    <div class="card-body">
+                    <table class="table thead-light">
+                        <thead class="thead-dark">
+                        <tr>
+                        
+                            <th>Product No</th>
+                            <th>Product Name</th>
+                            <th>Selling Price</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for data in Result %}
+                            <tr> 
+                                    {% csrf_token %}
+                            <td> {{data.Product_No}}</td>
+                            <td>{{data.Product_Name}}</td>
+                            <td>{{data.Selling_Price}}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                  </td>
+                    </div>
+                  
+                </form>
+                <script src="{% static 'vendor1/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'vendor1/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+  <script src="{% static 'vendor1/jquery-easing/jquery.easing.min.js' %}"></script>
+
+  <script src="{% static 'js/sb-admin-2.min.js' %}"></script>
+
+  <script src="{% static 'vendor1/chart.js/Chart.min.js' %}"></script>
+
+  <script src="{% static 'js/demo/chart-area-demo.js' %}"></script>
+  <script src="{% static 'js/demo/chart-pie-demo.js' %}"></script>
+  
+            </body>
+            </html>

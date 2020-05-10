@@ -1,0 +1,257 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Customer</title>
+
+  <!-- Custom fonts for this template-->
+  <link href="{% static 'vendor1/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <!-- Custom styles for this template-->
+  <link href="{% static 'css/sb-admin-2.min.css' %}" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+
+<body id="page-top">
+     
+  <!-- Page Wrapper -->
+  <div id="wrapper">
+
+    <!-- Sidebar -->
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+      <!-- Sidebar - Brand -->
+      <!-- <a class="sidebar-brand d-flex align-items-center justify-content-center"> -->
+        <!-- <div class="sidebar-brand-icon rotate-n-15">
+          <i class="fas fa-laugh-wink"></i>
+        </div> -->
+        <div> <font color="white" align="center"><br><br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;<b> <h1> Customer </h1></b> <br><br><br></div></font>
+      <!-- </a> -->
+
+      <!-- Divider -->
+      <hr class="sidebar-divider my-0">
+
+      <!-- Nav Item - Dashboard -->
+      <li class="nav-item active">
+        <a class="nav-link">
+          <!-- <i class="fas fa-fw fa-tachometer-alt"></i> -->
+          <span>Dashboard</span></a>
+      </li>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider">
+
+      <!-- Heading -->
+      <!-- <div class="sidebar-heading">
+        Interface
+      </div> -->
+
+      <!-- Nav Item - Pages Collapse Menu -->
+     
+      <li class="nav-item">
+          <a class="nav-link" href="{% url 'order' %}">
+           
+            <span>order Product </span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'history' %}">
+             
+              <span>view order history</span></a>
+        </li>
+  
+      <li class="nav-item">
+          <a class="nav-link" href="{% url 'login' %}">
+           
+            <span>Log Out </span></a>
+        </li>
+    </ul>
+    <td class="simple">
+      
+     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <form class="login100-form validate-form" method="POST">
+            {% csrf_token %}
+            <div class="container">
+              <br>
+              <div class="form-group row">
+                &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp; 
+                &nbsp; &nbsp;  &nbsp; 
+                
+              <div class="col-xs-2">
+                <table><tr>
+               <td class="font-weight-bold"><h5>Customer ID&nbsp; &nbsp;  &nbsp;</h5></td>
+
+               <td><input text="number" class="form-control" name="customerid" value="{{customerid}}" id="customerid" placeholder="Enter Customer ID" required></td>
+               <td class="font-weight-bold"><h5>&nbsp; &nbsp;  &nbsp;&nbsp; &nbsp;  &nbsp;&nbsp; &nbsp;  &nbsp;&nbsp; &nbsp;  &nbsp;Delivery date&nbsp; &nbsp;  &nbsp;</h5></td>
+
+              <td><input type="text" class="form-control" id="datepicker"  name="datepicker" value="{{datepicker}}" placeholder="Enter Delivery date" required></td>
+                
+            </tr>
+            
+              
+           
+              </table>
+              
+                <br>
+                <td class="font-weight-bold"><h5>&nbsp; &nbsp;  &nbsp;&nbsp; &nbsp;  &nbsp;&nbsp; &nbsp;  &nbsp;&nbsp; &nbsp;  &nbsp;
+                    &nbsp; &nbsp;  &nbsp;&nbsp; &nbsp;  &nbsp;&nbsp; &nbsp;  &nbsp;&nbsp; &nbsp;  &nbsp;
+                    &nbsp; &nbsp;  &nbsp;&nbsp; &nbsp;  &nbsp;&nbsp; &nbsp;  &nbsp;&nbsp; &nbsp;  &nbsp;
+                    &nbsp; &nbsp;  &nbsp;&nbsp; &nbsp;  &nbsp;&nbsp; &nbsp;  &nbsp;&nbsp; &nbsp;  &nbsp;
+                    &nbsp; &nbsp;  &nbsp;&nbsp; &nbsp;  &nbsp;&nbsp; &nbsp;  &nbsp;
+                    &nbsp;  &nbsp;&nbsp;  &nbsp;  &nbsp;&nbsp;{{name1}}{{Quant}}</h5></td>
+                
+                      
+
+
+
+              </div>
+            </div>
+           
+            
+  
+ 
+
+             
+              
+                    {% if name %}
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="text-center"><label for="">{{name}}</label></h4>
+                           
+                           
+                        </div>
+                        
+                            <div class="card-body">
+                              <table class="table thead-light">
+                                <thead class="thead-dark">
+                                <tr>
+                                    <th>Order</th>
+                                    <th>Product Id</th>
+                                    <th>Product Name</th>
+                                    <th>Quantity</th>
+                                    <th>Price</th>
+                                    <th>Total</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for data in Result %}
+                                    <tr> 
+                                        <td>   
+                                          <button class="btn btn-outline-primary" id="checkbox_{{data.id_no}}" name="checkbox_{{data.id_no}}" formaction="{% url 'find' data.id_no %}"><b>ADD</b></button>
+                                                <!-- <input type="button" id="checkbox_{{data.id_no}}" name="checkbox_{{data.id_no}}" value="ADD" formaction=""> -->
+                                                
+                                                </td>
+                                    <td><input type="number" readonly="true" name="pro_{{data.id_no}}"  id="pro_{{data.id_no}}" class="form-control"  value="{{data.Product_No}}"></td>
+                                    <!-- <td><input class="input100" type="text" name="Product_Name_{{data.id_no}}" class="form-control" value={{data.Product_Name}}></td> -->
+                                    <!-- <td>{{data.Product_Name}}</td> -->
+                                    <td style="width: 20%">
+                                      <input type="text" readonly="true" name="Product_Name_{{data.id_no}}" min="1"
+                                        class="form-control" value="{{data.Product_Name}}">
+                
+                                    </td>
+                                    <td style="width: 20%">
+                                        <input type="number" name="qty_{{data.id_no}}"  id="qty_{{data.id_no}}" min="1" class="form-control" oninput="cal('{{data.id_no}}')" value="" >
+                                    </td>
+                                    <td style="width: 20%">
+                                        <input type="number" readonly="true" name="sel_{{data.id_no}}"  id="sel_{{data.id_no}}" class="form-control"  value="{{data.Selling_Price}}">
+                                    </td>
+                                    <td style="width: 20%">
+                                            <input type="number" readonly="true" name="total_{{data.id_no}}" min="1"  id="total_{{data.id_no}}"  class="form-control" value="0">
+                                        <!-- <span name="total_{{data.id_no}}" id="total_{{data.id_no}}">  </span> -->
+                                    </td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+                                </div>
+                                <!-- <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-left: 34px">
+                                    <label for="">Total : </label>
+                                     <input type="text" readonly="true" name="total1"  id="total1"  class="form-control" value="{{p1}}">
+                                   <label for="total" id="tot_{{data.id_no}}"></label>
+                                </div> -->
+                            </div>
+                        </div>
+                    {% endif %}
+                    <br>
+                    <br>&nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp; 
+                          &nbsp; &nbsp;  &nbsp;&nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp; 
+                          &nbsp; &nbsp;  &nbsp;&nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;
+                          &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp; 
+                         
+                          <button class="btn btn-outline-primary" id="checkbox" name="checkbox" formaction="{% url 'show' %}"><b>&nbsp;&nbsp;  View Order&nbsp;&nbsp;  </b></button>
+             
+                   
+                    
+                    <h3>
+                      <font color="000000" face="chiller">
+                        <br>
+                        
+                       {{message}} 
+                        
+                      </font>
+                      </h3>
+            </form>
+        </div>
+    </td>
+  </div>    
+</body>
+
+  <script>
+        var sum=0
+    function cal(id_no){
+        var quatity = (document.getElementById('qty_'+id_no).value)
+        var price = (document.getElementById('sel_'+id_no).value)
+        var total = (document.getElementById('total_'+id_no))
+        var tot = (document.getElementById('total1'))
+        var Result = (quatity * price)
+        sum=sum+Result;
+        total.value = Result;      
+        total1.value=sum;
+    }
+</script>
+
+  <!-- Bootstrap core JavaScript-->
+  <script src="{% static 'vendor1/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'vendor1/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="{% static 'vendor1/jquery-easing/jquery.easing.min.js' %}"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script src="{% static 'js/sb-admin-2.min.js' %}"></script>
+
+  <!-- Page level plugins -->
+  <script src="{% static 'vendor1/chart.js/Chart.min.js' %}"></script>
+
+  <!-- Page level custom scripts -->
+  <script src="{% static 'js/demo/chart-area-demo.js' %}"></script>
+  <script src="{% static 'js/demo/chart-pie-demo.js' %}"></script>
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+ $(document).ready(function () {
+    var date = new Date();
+    var currentMonth = date.getMonth();
+    var currentDate = date.getDate();
+    var currentYear = date.getFullYear();
+
+    $('#datepicker').datepicker({
+        minDate: new Date(currentYear, currentMonth, currentDate),
+        dateFormat: 'yy-mm-dd'
+    });
+});
+  
+  
+</script>
+
+</html>

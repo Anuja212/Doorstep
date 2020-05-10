@@ -1,0 +1,257 @@
+{% load static %}
+<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
+<style>
+.simple{
+  padding-bottom: 1000px;
+  /* padding-right: 500px; */
+}
+
+</style>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Admin</title>
+  <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+	<link rel="icon" type="{% static 'image/png' %}" href="{% static 'images/icons/favicon.ico' %}"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'fonts/Linearicons-Free-v1.0.0/icon-font.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/animate/animate.css' %}">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/css-hamburgers/hamburgers.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/select2/select2.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'css/util.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+<html lang="en">
+ 
+  
+  <!-- Custom fonts for this template-->
+  <link href="{% static 'vendor1/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+  <!-- Custom styles for this template-->
+  <link href="{% static 'css/sb-admin-2.min.css' %}" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+
+<body id="page-top">
+     
+  <!-- Page Wrapper -->
+  <div id="wrapper">
+
+    <!-- Sidebar -->
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+      <!-- Sidebar - Brand -->
+      <!-- <a class="sidebar-brand d-flex align-items-center justify-content-center"> -->
+        <!-- <div class="sidebar-brand-icon rotate-n-15">
+          <i class="fas fa-laugh-wink"></i>
+        </div> -->
+        <div> <font color="white" align="center"><br><br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;<b> <h1>Admin </h1></b> <br><br><br></div></font>
+      <!-- </a> -->
+
+      <!-- Divider -->
+      <hr class="sidebar-divider my-0">
+
+      <!-- Nav Item - Dashboard -->
+      <li class="nav-item active">
+        <a class="nav-link">
+          <!-- <i class="fas fa-fw fa-tachometer-alt"></i> -->
+          <span>Dashboard</span></a>
+      </li>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider">
+
+      <!-- Heading -->
+      <!-- <div class="sidebar-heading">
+        Interface
+      </div> -->
+
+      <!-- Nav Item - Pages Collapse Menu -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+          <!-- <i class="fas fa-fw fa-cog"></i> -->
+          <span>Product</span>
+        </a>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            
+            <a class="collapse-item" href="{% url 'add' %}">Add Product</a>
+            <a class="collapse-item" href="{% url 'update' %}">Update Product</a>
+            <a class="collapse-item" href="{% url 'delete' %}">Delete Product</a>
+            <a class="collapse-item" href="{% url 'view' %}">View Product</a>
+
+          </div>
+        </div>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{% url 'customerdetail' %}">
+         
+          <span>Customer Detail</span>
+        </a>
+        
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{% url 'orderdetail' %}">
+         
+          <span>Todays Delivery Order</span>
+        </a>
+        
+      </li>
+      
+      <li class="nav-item">
+          <a class="nav-link" href="{% url 'login' %}">
+           
+            <span>Log Out </span></a>
+        </li>
+    </ul></td>
+    <td>
+        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+      <div class="wrap-login100 p-l-50 p-r-50 p-t-77 p-b-30">
+        
+            <form class="login100-form validate-form" action="{% url 'modify' %}" method="POST">
+
+            {% csrf_token %}
+          <span class="login100-form-title p-b-55">
+            PRODUCT DETAIL
+          </span>
+          
+
+          {% for data in Result %}
+               
+          <div class="wrap-input100 validate-input m-b-16">
+              <input class="input100" type="text" name="Product_Id" id="Product_Id" readonly="true" value={{data.Product_No}}>
+              <span class="focus-input100"></span>
+              <!-- <span class="symbol-input100">
+                 <span class="lnr lnr-lock"></span> 
+              </span> -->
+            </div>
+
+            
+          <div class="wrap-input100 validate-input m-b-16">
+             <input class="input100" type="text" name="Product_Name" value={{data.Product_Name}}>
+            <span class="focus-input100"></span>
+            
+          </div>
+
+          <div class="wrap-input100 validate-input m-b-16">
+            <input class="input100" type="number" name="Quantity" id="Quantity" value={{data.Quantity}} oninput="calculate()">
+            <span class="focus-input100"></span>
+            <!-- <span class="symbol-input100">
+               <span class="lnr lnr-lock"></span> 
+            </span> -->
+                    </div>
+                    
+                    <div class="wrap-input100 validate-input m-b-16">
+            <input class="input100" type="number" name="Cost_Price"  id="Cost_Price" value={{data.Cost_Price}} oninput="calculate()">
+            <span class="focus-input100"></span>
+            <!-- <span class="symbol-input100">
+               <span class="lnr lnr-lock"></span> 
+            </span> -->
+                    </div>
+                    
+                    <div class="wrap-input100 validate-input m-b-16">
+           <input class="input100" type="text" name="Total_cost_Price"  id="Total_cost_Price" value={{data.Tot_Cost_Price}}>
+            <span class="focus-input100"></span>
+            <!-- <span class="symbol-input100">
+               <span class="lnr lnr-lock"></span> 
+            </span> -->
+                    </div>
+                    
+                    <div class="wrap-input100 validate-input m-b-16">
+            <input class="input100" type="number" name="Selling_Price"  id="Selling_Price" value={{data.Selling_Price}}  oninput="calculate()">
+            <span class="focus-input100"></span>
+            <!-- <span class="symbol-input100">
+               <span class="lnr lnr-lock"></span> 
+            </span> -->
+          </div>
+
+          <div class="wrap-input100 validate-input m-b-16">
+            <input class="input100" type="text" name="Total_Selling_Price" id="Total_Selling_Price" value={{data.Tot_selling_Price}}>
+            <span class="focus-input100"></span>
+            <!-- <span class="symbol-input100">
+               <span class="lnr lnr-lock"></span> 
+            </span> -->
+          </div>
+
+          {% endfor %}
+          
+          <div class="container-login100-form-btn p-t-25">
+            <button class="login100-form-btn">
+              Update
+            </button>
+                    </div>
+          
+            <h3>
+                <font color="000000" face="chiller">
+                  <br>
+                  
+                 {{message}} 
+                  
+                </font>
+                </h3>
+          </div>
+          
+        </form>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+</td>
+</tr> 
+</table>
+  </div>    
+
+
+      
+
+  <!-- Bootstrap core JavaScript-->
+  
+  <script>
+    function calculate() {
+      var myBox1 = document.getElementById('Quantity').value;	
+      var myBox2 = document.getElementById('Cost_Price').value;
+      var myBox3 = document.getElementById('Selling_Price').value;
+      var Price2 = document.getElementById('Total_cost_Price');	
+      var Price4 = document.getElementById('Total_Selling_Price');	
+      var myResult = myBox1 * myBox2;
+      var myResult1 = myBox1 * myBox3;
+      Price2.value = myResult;
+      Price4.value=myResult1;              
+    }
+  </script>
+  <!-- Core plugin JavaScript-->
+  <script src="{% static 'vendor1/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'vendor1/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+  <script src="{% static 'vendor1/jquery-easing/jquery.easing.min.js' %}"></script>
+
+  <script src="{% static 'js/sb-admin-2.min.js' %}"></script>
+
+  <script src="{% static 'vendor1/chart.js/Chart.min.js' %}"></script>
+
+  <script src="{% static 'js/demo/chart-area-demo.js' %}"></script>
+  <script src="{% static 'js/demo/chart-pie-demo.js' %}"></script>
+
+</body>
+</html>

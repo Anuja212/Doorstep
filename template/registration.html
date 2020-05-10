@@ -1,0 +1,158 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Registration</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+	<link rel="icon" type="{% static 'image/png' %}" href="{% static 'images/icons/favicon.ico' %}"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'fonts/Linearicons-Free-v1.0.0/icon-font.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/animate/animate.css' %}">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/css-hamburgers/hamburgers.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/select2/select2.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'css/util.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+<!--===============================================================================================-->
+</head>
+<body>
+	
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100 p-l-50 p-r-50 p-t-77 p-b-30">
+				
+						<form class="login100-form validate-form" action="{% url 'Registration' %}" method="POST">
+
+						{% csrf_token %}
+					<span class="login100-form-title p-b-55">
+						Registration Form
+					</span>
+					
+
+
+					<div class="wrap-input100 validate-input m-b-16">
+							<input class="input100" type="text" name="generate" id="generate" readonly="true" placeholder="Generate ID" onfocus="IDGenerator()" required>
+							<span class="focus-input100"></span>
+							<!-- <span class="symbol-input100">
+								 <span class="lnr lnr-lock"></span> 
+							</span> -->
+						</div>
+
+					<div class="wrap-input100 validate-input m-b-16">
+						<input class="input100" type="text" name="Firstname" placeholder="First Name" required>
+						<span class="focus-input100"></span>
+						
+					</div>
+
+					<div class="wrap-input100 validate-input m-b-16">
+						<input class="input100" type="text" name="Lastname" placeholder="Last Name" required>
+						<span class="focus-input100"></span>
+						<!-- <span class="symbol-input100">
+							 <span class="lnr lnr-lock"></span> 
+						</span> -->
+                    </div>
+                    
+                    <div class="wrap-input100 validate-input m-b-16">
+						<input class="input100" type="text" name="Username"  placeholder="Username" required>
+						<span class="focus-input100"></span>
+						<!-- <span class="symbol-input100">
+							 <span class="lnr lnr-lock"></span> 
+						</span> -->
+                    </div>
+                    
+                    <div class="wrap-input100 validate-input m-b-16">
+						<input class="input100" type="password" name="Password" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
+						<span class="focus-input100"></span>
+						<!-- <span class="symbol-input100">
+							 <span class="lnr lnr-lock"></span> 
+						</span> -->
+                    </div>
+                    
+                    <div class="wrap-input100 validate-input m-b-16">
+						<input class="input100" type="text" name="Address" placeholder="Address" required>
+						<span class="focus-input100"></span>
+						<!-- <span class="symbol-input100">
+							 <span class="lnr lnr-lock"></span> 
+						</span> -->
+					</div>
+
+					<div class="wrap-input100 validate-input m-b-16">
+						<input class="input100" type="tel" name="Phoneno"  placeholder="Phone No" pattern="^\d{10}" required >
+						<span class="focus-input100"></span>
+						<!-- <span class="symbol-input100">
+							 <span class="lnr lnr-lock"></span> 
+						</span> -->
+					</div>
+
+					
+					
+					<div class="container-login100-form-btn p-t-25">
+						<button class="login100-form-btn">
+							Register
+						</button>
+                    </div>
+					<div>
+                    <a class="txt1 bo1 hov1" href="{% url 'login' %}">
+							<br>
+							<br>
+							Sign In		
+												
+						</a>
+						<h3>
+								<font color="000000" face="chiller">
+									<br>
+									
+								 {{message}} 
+								  
+								</font>
+							  </h3>
+					</div>
+					
+				</form>
+				
+			</div>
+		</div>
+	</div>
+	
+	
+
+	
+<!--===============================================================================================-->	
+	<script src="{% static 'vendor/jquery/jquery-3.2.1.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'vendor/bootstrap/js/popper.js' %}"></script>
+	<script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'vendor/select2/select2.min.js' %}' %}'"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'js/main.js' %}"></script>
+
+</body>
+
+
+<script>
+
+now = new Date();
+        randomNum = '';
+        randomNum += Math.floor(100000 + Math.random() * 900000);
+		var si ='CID' + randomNum
+		// var value = randomNum.concat('CID'); 
+
+		
+        window.onload = function () {
+            document.getElementById("generate").value = si;
+        }
+
+</script>
+</html>

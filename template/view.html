@@ -1,0 +1,164 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Admin</title>
+
+  <!-- Custom fonts for this template-->
+  <link href="{% static 'vendor1/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+  <!-- Custom styles for this template-->
+  <link href="{% static 'css/sb-admin-2.min.css' %}" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+
+<body id="page-top">
+     
+  <!-- Page Wrapper -->
+  <div id="wrapper">
+
+    <!-- Sidebar -->
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+      <!-- Sidebar - Brand -->
+      <!-- <a class="sidebar-brand d-flex align-items-center justify-content-center"> -->
+        <!-- <div class="sidebar-brand-icon rotate-n-15">
+          <i class="fas fa-laugh-wink"></i>
+        </div> -->
+        <div> <font color="white" align="center"><br><br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;<b> <h1> Admin </h1></b> <br><br><br></div></font>
+      <!-- </a> -->
+
+      <!-- Divider -->
+      <hr class="sidebar-divider my-0">
+
+      <!-- Nav Item - Dashboard -->
+      <li class="nav-item active">
+        <a class="nav-link">
+          <!-- <i class="fas fa-fw fa-tachometer-alt"></i> -->
+          <span>Dashboard</span></a>
+      </li>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider">
+
+      <!-- Heading -->
+      <!-- <div class="sidebar-heading">
+        Interface
+      </div> -->
+
+      <!-- Nav Item - Pages Collapse Menu -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+          <!-- <i class="fas fa-fw fa-cog"></i> -->
+          <span>Product</span>
+        </a>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            
+            <a class="collapse-item" href="{% url 'add' %}">Add Product</a>
+            <a class="collapse-item" href="{% url 'update' %}">Update Product</a>
+            <a class="collapse-item" href="{% url 'delete' %}">Delete Product</a>
+            <a class="collapse-item" href="{% url 'delete' %}">View Product</a>
+          </div>
+        </div>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link collapsed" href="{% url 'customerdetail' %}">
+           
+            <span>Customer Detail</span>
+          </a>
+          
+        </li>
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="{% url 'orderdetail' %}">
+           
+            <span>Todays Delivery Order</span>
+          </a>
+          
+        </li>
+       
+     
+      <li class="nav-item">
+          <a class="nav-link" href="{% url 'login' %}">
+           
+            <span>Log Out </span></a>
+        </li>
+    </ul>
+    <td class="simple"> 
+        
+        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+        <form action="{% url 'available' %}">
+          <div class="container">
+              <br><br>
+              
+              <div class="card">
+                  <div class="card-header">
+                      <h4 class="text-center"><label for="">Available Stock</label></h4>
+                  </div>
+                      <div class="card-body">
+                      <table class="table thead-light">
+                          <thead class="thead-dark">
+                          <tr>
+                             
+                                <th>Date</th>
+                              <th>Product No</th>
+                              <th>Product Name</th>
+                              <th>Quantity</th>
+                              <th>Cost Price</th>
+                              <th>Tot Cost Price</th>
+                              <th>Selling Price</th>
+                              <th>Tot Selling Price</th>
+  
+                          </tr>
+                          </thead>
+                          <tbody>
+                          {% for data in Result %}
+                              <tr> 
+                                      {% csrf_token %}
+                              <td>{{data.Date}}</td>
+                              <td> {{data.Product_No}}</td>
+                              <td>{{data.Product_Name}}</td>
+                              <td>{{data.Quantity}}</td>
+                              <td>{{data.Cost_Price}}</td>
+                              <td>{{data.Tot_Cost_Price}}</td>
+                              <td>{{data.Selling_Price}}</td>
+                              <td>{{data.Tot_selling_Price}}</td>
+                              </tr>
+                              {% endfor %}
+                          </tbody>
+                      </table>
+                      </div>
+                    
+                  </form>
+  </div>    
+
+
+      
+
+  <!-- Bootstrap core JavaScript-->
+  <script src="{% static 'vendor1/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'vendor1/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="{% static 'vendor1/jquery-easing/jquery.easing.min.js' %}"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script src="{% static 'js/sb-admin-2.min.js' %}"></script>
+
+  <!-- Page level plugins -->
+  <script src="{% static 'vendor1/chart.js/Chart.min.js' %}"></script>
+
+  <!-- Page level custom scripts -->
+  <script src="{% static 'js/demo/chart-area-demo.js' %}"></script>
+  <script src="{% static 'js/demo/chart-pie-demo.js' %}"></script>
+
+</body>
+</html>
